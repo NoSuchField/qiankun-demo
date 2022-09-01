@@ -4,13 +4,16 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
 import { registerMicroApps, initGlobalState, setDefaultMountApp, runAfterFirstMounted, start } from 'qiankun';
 
 const app = createApp(App)
 
 app.use(router)
 app.use(store)
-
+app.use(ElementPlus)
 app.mount('#app')
 
 /**
@@ -65,7 +68,7 @@ setGlobalState({
 /**
 * Step2 设置默认进入的子应用
 */
-setDefaultMountApp('/vue3');
+setDefaultMountApp('/home');
 
 /**
 * Step3 启动应用
