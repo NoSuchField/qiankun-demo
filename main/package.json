@@ -13,8 +13,7 @@
     "element-plus": "^2.2.15",
     "qiankun": "^2.7.5",
     "vue": "^3.0.0-0",
-    "vue-router": "^4.0.0-beta.11",
-    "vuex": "^4.0.0-beta.4"
+    "vue-router": "^4.0.0-beta.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
