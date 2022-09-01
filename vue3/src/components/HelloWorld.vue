@@ -25,7 +25,7 @@ export default {
 
     const changeGlobalState = () => {
       if (ctx.$setGlobalState) {
-        
+        // ctx.$setGlobalState({name: 'chaunjie'})
       }
     };
 

@@ -33,12 +33,12 @@
     setup() {
       const menuList = [
         {
-          'id': 2,
+          'id': '1',
           'path': '/vue3',
           'name': 'Vue 3'
         },
         {
-          'id': 1,
+          'id': '2',
           'path': '/another-vue3',
           'name': 'Another Vue 3'
         },
@@ -47,7 +47,7 @@
       menuList.forEach(m => {
         menuIndexMap.set(m.path.endsWith("/") ? m.path.substring(0, m.path.length - 1) : m.path, m.id)
       })
-      const activeIndex = ref('1')
+      const activeIndex = ref('2')
       const handleSelect = (key, keyPath) => {
         console.log(key, keyPath)
       }
