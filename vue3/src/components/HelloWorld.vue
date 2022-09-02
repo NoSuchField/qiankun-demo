@@ -1,73 +1,38 @@
-<template>
-  <div class="hello-content">
-    <h1>{{ msg }}</h1>
-    <p>Vue version: {{ version }}</p>
-  </div>
-</template>
+<script setup lang="ts">
+import { ref } from 'vue'
 
-<script>
-import { onMounted, onBeforeUpdate, getCurrentInstance, version } from 'vue';
+defineProps<{ msg: string }>()
 
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
-
-  data() {
-    return {
-      nameColor: 'orange',
-    };
-  },
-
-  setup() {
-    const { ctx } = getCurrentInstance();
-
-    const changeGlobalState = () => {
-      if (ctx.$setGlobalState) {
-        // ctx.$setGlobalState({name: 'chaunjie'})
-      }
-    };
-
-    onMounted(() => {
-      
-    });
-
-    onBeforeUpdate(() => {
-      
-    });
-
-    return {
-      changeGlobalState,
-      version,
-    };
-  },
-};
+const count = ref(1)
 </script>
 
-<style>
-.name {
-  color: v-bind(nameColor);
-}
-</style>
+<template>
+  <h1>{{ msg }}</h1>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+  <div class="card">
+    <button type="button" @click="count++">count is {{ count }}</button>
+    <p>
+      Edit
+      <code>components/HelloWorld.vue</code> to test HMR
+    </p>
+  </div>
+
+  <p>
+    Check out
+    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
+      >create-vue</a
+    >, the official Vue + Vite starter
+  </p>
+  <p>
+    Install
+    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
+    in your IDE for a better DX
+  </p>
+  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+</template>
+
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-h1 {
-  color: #64b587;
+.read-the-docs {
+  color: #888;
 }
 </style>

@@ -25,50 +25,45 @@
   <div id="subapp-viewport"></div>
 </template>
 
-<script>
+<script lang="ts" setup>
   import { ref, watch } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
-  export default {
-    setup() {
-      const menuList = [
-        {
-          'id': '1',
-          'path': '/vue3',
-          'name': 'Vue 3'
-        },
-        {
-          'id': '2',
-          'path': '/another-vue3',
-          'name': 'Another Vue 3'
-        },
-      ]
-      let menuIndexMap = new Map()
-      menuList.forEach(m => {
-        menuIndexMap.set(m.path.endsWith("/") ? m.path.substring(0, m.path.length - 1) : m.path, m.id)
-      })
-      const activeIndex = ref('2')
-      const handleSelect = (key, keyPath) => {
-        console.log(key, keyPath)
-      }
+  const menuList = [
+    {
+      'id': '1',
+      'path': '/vue3',
+      'name': 'Vue 3'
+    },
+    {
+      'id': '2',
+      'path': '/another-vue3',
+      'name': 'Another Vue 3'
+    },
+  ]
+  let menuIndexMap = new Map()
+  menuList.forEach(m => {
+    menuIndexMap.set(m.path.endsWith("/") ? m.path.substring(0, m.path.length - 1) : m.path, m.id)
+  })
+  const activeIndex = ref('2')
+  const handleSelect = (key:string|number, keyPath:string) => {
+    console.log(key, keyPath)
+  }
 
-      const route = useRoute()
-      const router = useRouter()
+  const route = useRoute()
+  const router = useRouter()
 
-      watch(route,(val)=>{
-        let key = val.path.endsWith("/") ? val.path.substring(0, val.path.length - 1) : val.path
-        activeIndex.value = menuIndexMap.get(key)
-      }, {deep: true})
+  watch(route,(val)=>{
+    let key = val.path.endsWith("/") ? val.path.substring(0, val.path.length - 1) : val.path
+    activeIndex.value = menuIndexMap.get(key)
+  }, {deep: true})
 
-      const navigateTo = (path) => {
-        router.push(path)
-      }
-      return { menuList, activeIndex, navigateTo, handleSelect }
-    }
+  const navigateTo = (path:string) => {
+    router.push(path)
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -90,10 +85,7 @@
     flex-grow: 1;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-  }
+
 
   a {
     text-decoration: none;

@@ -3,8 +3,5 @@
   <img alt="Vue logo" src="../assets/logo.png" />
 </template>
 
-<script>
-export default {
-  name: 'Home'
-};
+<script lang="ts" setup>
 </script>
