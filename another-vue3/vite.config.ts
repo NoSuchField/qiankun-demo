@@ -6,5 +6,5 @@ import qiankun from 'vite-plugin-qiankun';
 export default defineConfig({
   plugins: [vue(), qiankun('another-vue3', {useDevMode: true})],
   // 生产环境需要指定运行域名作为base
-  base: 'http://127.0.0.1:7105/'
+  base: 'http://127.0.0.1:7107/'
 })
