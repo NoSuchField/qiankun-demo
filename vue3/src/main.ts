@@ -1,37 +1,38 @@
 import './style.css'
-import { type App as AppType, createApp } from 'vue';
-import { createRouter, createWebHistory } from 'vue-router';
-import App from './App.vue';
-import routes from './router';
+import { App, createApp } from 'vue'
+import app from './App.vue'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper';
 
-let app: AppType
+let root: App;
 
-function render (root: Element | Document = document) {
-  let history = createWebHistory(qiankunWindow.__POWERED_BY_QIANKUN__ ? '/vue3' : '/');
-  let router = createRouter({
-    history,
-    routes,
-  });
-  app = createApp(App)
-  app.use(router).mount(root.querySelector('#app'))
+function render(props: any) {
+  const { container } = props;
+  root = createApp(app)
+  const c = container
+    ? container.querySelector("#app")
+    : document.getElementById("app")
+  root.mount(c)
 }
 
 renderWithQiankun({
-  bootstrap () {
-    // do nothing.
+  mount(props) {
+    console.log("vue3 mount");
+    render(props);
   },
-  mount (props: any) {
-    render(props.container)
+  bootstrap() {
+    console.log("bootstrap");
   },
-  unmount () {
-    app?.unmount()
+  unmount(props: any) {
+    console.log("vue3 unmount");
+    root.unmount();
   },
   update(props: any) {
+    console.log("vue3 update");
     console.log(props)
   },
-})
+});
 
 if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
-  render()
+  render({});
 }
+
