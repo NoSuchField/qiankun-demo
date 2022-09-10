@@ -16,19 +16,14 @@ function render(props: any) {
 
 renderWithQiankun({
   mount(props) {
-    console.log("another-vue3 mount");
     render(props);
   },
   bootstrap() {
-    console.log("bootstrap");
   },
   unmount(props: any) {
-    console.log("another-vue3 unmount");
     root.unmount();
   },
   update(props: any) {
-    console.log("another-vue3 update");
-    console.log(props)
   },
 });
 

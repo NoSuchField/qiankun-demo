@@ -44,9 +44,8 @@ registerMicroApps(
     // 挂载前的回调
     beforeLoad: (app: any) => {
       Array.from(document.getElementsByTagName('head')[0].children).filter(item => item.tagName === 'STYLE').forEach(element => {  
-        element.setAttribute('data-app', 'main')
+        element.setAttribute('data-app', app.name)
       })
-      console.log('[LifeCycle] before load %c%s', 'color: green;', app.name);
       return Promise.resolve();
     },
     // 挂载后的回调
@@ -74,12 +73,10 @@ registerMicroApps(
         } else {
           styleMap.set(app.name, appStyleList)
         }
-        console.log('[LifeCycle] before mount %c%s', 'color: green;', app.name);
       },
     ],
     // 卸载后的回调
     afterMount: (app: any) => {
-      console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name);
       return Promise.resolve();
     },
   },

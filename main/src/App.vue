@@ -47,7 +47,6 @@
   })
   const activeIndex = ref('2')
   const handleSelect = (key:string|number, keyPath:string) => {
-    console.log(key, keyPath)
   }
 
   const route = useRoute()
