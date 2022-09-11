@@ -1,0 +1,58 @@
+server {
+    listen       80;
+    listen       7105;
+    server_name  localhost;
+
+    add_header Access-Control-Allow-Credentials true;
+    add_header Access-Control-Allow-Origin * always;
+    add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
+    add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+    
+    #charset koi8-r;
+
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /srv/www/htdocs/;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /srv/www/htdocs/;
+    }
+}
+
+server {
+    listen  7106;
+    server_name     localhost;
+
+    add_header Access-Control-Allow-Credentials true;
+    add_header Access-Control-Allow-Origin * always;
+    add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
+    add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+    location / {
+        root   /srv/www/vue3/;
+        index  index.html index.htm;
+    }
+}
+
+server {
+    listen  7107;
+    server_name localhost;
+
+    add_header Access-Control-Allow-Credentials true;
+    add_header Access-Control-Allow-Origin * always;
+    add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
+    add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+
+    location / {
+        root   /srv/www/another-vue3/;
+        index  index.html index.htm;
+    }
+}
