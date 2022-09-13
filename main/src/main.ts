@@ -41,14 +41,14 @@ registerMicroApps(
     },
   ],
   {
-    // 挂载前的回调
+    // 应用加载前的回调
     beforeLoad: (app: any) => {
       Array.from(document.getElementsByTagName('head')[0].children).filter(item => item.tagName === 'STYLE').forEach(element => {  
         element.setAttribute('data-app', app.name)
       })
       return Promise.resolve();
     },
-    // 挂载后的回调
+    // 挂载前的回调
     beforeMount: [
       // @ts-ignore
       app => {
